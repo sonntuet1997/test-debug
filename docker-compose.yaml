@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  ma:
+    image: ma
+    build:
+      platforms:
+        - linux/arm64
+      context: .
+      dockerfile: Dockerfile
+      ssh:
+        - default
+    ports:
+      - "2345:2345"
