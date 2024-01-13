@@ -1,11 +1,21 @@
 package main
 
-import "time"
+import (
+	"fmt"
+	"net/http"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
-	print("Hello World")
-	for {
-		print("Waiting")
-		time.Sleep(1 * time.Second)
+	router := gin.Default()
+	router.GET("/", func(c *gin.Context) {
+		fmt.Println("aaa")
+		c.String(http.StatusOK, "hello world")
+	})
+
+	err := router.Run("0.0.0.0:8080")
+	if err != nil {
+		fmt.Print(err.Error())
 	}
 }
